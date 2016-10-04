@@ -7,9 +7,9 @@ const command = process.argv[2]
 if (!(command in geo2poly)) {
   console.log(`
 Usage:
-  geo2poly <command> (read from stdin)
-  geo2poly <command> -f <file> [<file2>[, ...]]
-  geo2poly <command> <input>
+  geojson-polyline <command> (read from stdin)
+  geojson-polyline <command> -f <file> [<file2>[, ...]]
+  geojson-polyline <command> <input>
 
 Convert the coordinates of a GeoJSON object to and from encoded polylines. 
 
@@ -27,13 +27,13 @@ function run () {
     case undefined:
       processStream(process.stdin)
       break
-    // `geo2poly -f <filename>`
+    // `geojson-polyline -f <filename>`
     case '-f':
       process.argv.slice(4).forEach(file => {
         processStream(fs.createReadStream(file))
       })
       break
-    // `geo2poly decode '{"type":"Polygon","coordinates":["yvd|Fh~gqNfEqKzBEkEvKwB?"]}'
+    // `geojson-polyline decode '{"type":"Polygon","coordinates":["yvd|Fh~gqNfEqKzBEkEvKwB?"]}'
     default:
       exec(command, JSON.parse(process.argv[3]))
   }
