@@ -1,34 +1,15 @@
 # GeoJSON PolyLine
 
-Convert GeoJSON coordinates to and from encoded polylines. Supports all 9 standard GeoJSON types.
-
-
-## Description
-
-The `geojson-polyline` utility provides a convenient way to encode and decode the geometry coordinates of GeoJSON objects as polylines.
-
-The following GeoJSON types are supported:
-
-- [x] [Point](http://geojson.org/geojson-spec.html#id2)
-- [x] [MultiPoint](http://geojson.org/geojson-spec.html#id5)
-- [x] [LineString](http://geojson.org/geojson-spec.html#id3)
-- [x] [MultiLineString](http://geojson.org/geojson-spec.html#id6) 
-- [x] [Polygon](http://geojson.org/geojson-spec.html#id4)
-- [x] [MultiPolygon](http://geojson.org/geojson-spec.html#id7)
-- [x] [Feature](http://geojson.org/geojson-spec.html#feature-objects)
-- [x] [FeatureCollection](http://geojson.org/geojson-spec.html#feature-collection-objects)
-- [x] [GeometryCollection](http://geojson.org/geojson-spec.html#geometrycollection)
+Convert GeoJSON coordinates to and from encoded polylines. Supports [encoding](#encodegeojson-options) or [decoding](#decodepolygeo-options) geometries/coordinates for all 9 standard GeoJSON types. Use it in [Node.js](#install) (optionally as a [transform stream](#stream-api)), in the [browser, as a Web Worker, or from the command line. 
 
 
 ## Install
-
-*Node*
 
 ```sh
 npm install geojson-polyline
 ```
 
-## API
+## Usage
 
 ### `encode(geoJSON[, options])`
 
@@ -94,10 +75,19 @@ fs.createReadStream('./tl_2016_33_place.geojson')
 
 Standalone builds are available in [`/dist`](./dist) for in-browser usage, which are ES3 compatable.
 
-If you want to decode polylines using Web Worker, that is supported out of the box.
+```html
+<script src="dist/geojson-polyline.min.js"></script>
+<script>
+  var decoded = encoded.map(GeoJSONPolyline.decode);
+</script>
+```
+
+### Web Worker
+
+If you want to decode polylines using [Web Workers](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers), that is supported out of the box:
 
 ```js
-var worker = new Worker('geojson-polyline.min.js')
+var worker = new Worker('dist/geojson-polyline.min.js')
 var decoded = []
 encoded.forEach(function(encoded){
   worker.postMessage(['decode', encoded])
@@ -110,9 +100,11 @@ worker.onmessage = function(event) {
 }
 ```
 
+> Currently, decoding and encoding is faster in the browser without using Web Workers.
+
 ## Command Line Interface (CLI)
 
-Convert GeoJSON objects, features, and feature collections from the commandline. Works great for `.geojson` files from [ogr2ogr](http://www.gdal.org/ogr2ogr.html) or [shp2json](https://www.npmjs.com/package/shp2json).
+Convert GeoJSON objects, features, and feature collections from the command line. Works great for `.geojson` files from [ogr2ogr](http://www.gdal.org/ogr2ogr.html) or [shp2json](https://www.npmjs.com/package/shp2json).
 
 
 ### Install
@@ -148,6 +140,12 @@ Command is one of:
   toPolyline
   fromPolyline
 ```
+
+### Example
+
+```sh
+geojson-polyline encode -f tabblock2010_56_pophu.geojson | mongoimport -c tabblock2010
+ ``` 
 
 ## Additional Information
 
