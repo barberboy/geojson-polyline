@@ -1,0 +1,38 @@
+{
+  "name": "geojson-polyline",
+  "version": "1.0.0",
+  "description": "Convert GeoJSON coordinates to and from encoded polylines. Supports all major GeoJSON types.",
+  "main": "geojson-polyline.js",
+  "bin": {
+    "geojson-polyline": "./bin/cli.js"
+  },
+  "directories": {
+    "dist": "dist",
+    "test": "test"
+  },
+  "scripts": {
+    "prepublish": "npm test && npm run dist",
+    "dist": "browserify geojson-polyline.js -s GeoJSONPolyline -o dist/geojson-polyline.js  && uglifyjs dist/geojson-polyline.js -o dist/geojson-polyline.min.js",
+    "test": "standard geojson-polyline.js && mocha test"
+  },
+  "keywords": [
+    "polyline",
+    "encoded",
+    "geojson"
+  ],
+  "author": "Benjamin Barber",
+  "license": "ISC",
+  "devDependencies": {
+    "browserify": "^13.1.0",
+    "mocha": "^3.1.0",
+    "standard": "^8.3.0",
+    "uglifyjs": "^2.4.10"
+  },
+  "dependencies": {
+    "JSONStream": "^1.2.1",
+    "event-stream": "^3.3.4",
+    "from2-string": "^1.1.0",
+    "object-assign": "^4.1.0",
+    "polyline": "^0.2.0"
+  }
+}
