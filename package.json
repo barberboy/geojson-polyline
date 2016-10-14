@@ -13,7 +13,7 @@
   "scripts": {
     "prepublish": "npm test && npm run dist",
     "dist": "browserify geojson-polyline.js -s GeoJSONPolyline -o dist/geojson-polyline.js  && uglifyjs dist/geojson-polyline.js -o dist/geojson-polyline.min.js",
-    "test": "standard geojson-polyline.js && mocha test"
+    "test": "standard geojson-polyline.js && istanbul cover _mocha"
   },
   "keywords": [
     "polyline",
@@ -24,6 +24,7 @@
   "license": "ISC",
   "devDependencies": {
     "browserify": "^13.1.0",
+    "istanbul": "^0.4.5",
     "mocha": "^3.1.0",
     "standard": "^8.3.0",
     "uglifyjs": "^2.4.10"
