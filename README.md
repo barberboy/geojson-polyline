@@ -78,7 +78,7 @@ fs.createReadStream('./tl_2016_33_place.geojson')
 
 ## Browser Usage
 
-Standalone builds are available in [`/dist`](./dist) for in-browser usage, which are ES3 compatable.
+Standalone builds are available in [`/dist`](./dist) for in-browser usage, which are ES3 compatible.
 
 ```html
 <script src="dist/geojson-polyline.min.js"></script>
