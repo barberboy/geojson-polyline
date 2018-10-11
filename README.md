@@ -159,7 +159,7 @@ geojson-polyline encode -f tabblock2010_56_pophu.geojson | mongoimport -c tabblo
 
 ## Additional Information
 
-[Google's encoded polyline algorithm][Polyline Format] provides for very efficient encoding and storage of coordinate data. The [`polyline` library from MapBox][MapBox Polyline] provides an implementation to encode/decode polylines, but only supports GeoJSON "LineString" features, not "Polygons" or "MultiLineStrings".
+[Google's encoded polyline algorithm][Polyline Format] provides for very efficient encoding and storage of coordinate data. The [`@mapbox/polyline` library from MapBox][MapBox Polyline] provides an implementation to encode/decode polylines, but only supports GeoJSON "LineString" features, not "Polygons" or "MultiLineStrings".
 
 [MapBox Polyline]: https://github.com/mapbox/polyline#readme
 [Polyline Format]: https://developers.google.com/maps/documentation/utilities/polylinealgorithm

@@ -30,11 +30,11 @@
     "uglifyjs": "^2.4.10"
   },
   "dependencies": {
+    "@mapbox/polyline": "^1.0.0",
     "JSONStream": "^1.2.1",
     "event-stream": "^4.0.1",
     "from2-string": "^1.1.0",
-    "object-assign": "^4.1.0",
-    "polyline": "^0.2.0"
+    "object-assign": "^4.1.0"
   },
   "repository": {
     "type": "git",

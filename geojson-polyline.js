@@ -1,5 +1,5 @@
 var assign = require('object-assign')
-var polyline = require('polyline')
+var polyline = require('@mapbox/polyline')
 
 var GeoJSONPolyline = module.exports = {
   // Pick and choose your verbs
