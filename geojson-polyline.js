@@ -178,7 +178,9 @@ if (typeof addEventListener !== 'undefined') {
     var method = message.data[0]
     var geojson = message.data[1]
     var precision = message.data[2]
-    var converted = GeoJSONPolyline[method](geojson, precision)
+    if(method)
+      var converted = GeoJSONPolyline[method](geojson, precision)
+    else return false;
     postMessage(converted)
   })
 }
