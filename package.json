@@ -1,6 +1,6 @@
 {
   "name": "geojson-polyline",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Convert GeoJSON coordinates to and from encoded polylines. Supports all major GeoJSON types.",
   "main": "geojson-polyline.js",
   "bin": {
