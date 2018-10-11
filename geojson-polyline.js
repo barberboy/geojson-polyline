@@ -176,11 +176,11 @@ if (typeof addEventListener !== 'undefined') {
   /* global addEventListener, postMessage */
   addEventListener('message', function (message) {
     var method = message.data[0]
-    var geojson = message.data[1]
-    var precision = message.data[2]
-    if(method)
+    if (method in GeoJSONPolyline) {
+      var geojson = message.data[1]
+      var precision = message.data[2]
       var converted = GeoJSONPolyline[method](geojson, precision)
-    else return false;
-    postMessage(converted)
+      postMessage(converted)
+    }
   })
 }
