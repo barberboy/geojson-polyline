@@ -32,7 +32,7 @@
   "dependencies": {
     "@mapbox/polyline": "^1.0.0",
     "JSONStream": "^1.2.1",
-    "event-stream": "^4.0.1",
+    "event-stream": "3.3.4",
     "from2-string": "^1.1.0",
     "object-assign": "^4.1.0"
   },
